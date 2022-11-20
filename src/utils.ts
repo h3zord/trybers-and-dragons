@@ -4,4 +4,12 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (newMax - newMin)) + newMin;
 }
 
+function checkDied(hp: number) {
+  if (hp <= 0) {
+    return -1;
+  }
+  return hp;
+}
+
 export default getRandomInt;
+export { checkDied };

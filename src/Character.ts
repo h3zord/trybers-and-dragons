@@ -1,8 +1,8 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter';
+import Fighter, { SimpleFighter } from './Fighter';
 import Race, { Elf } from './Races';
-import getRandomInt from './utils';
+import getRandomInt, { checkDied } from './utils';
 
 export default class Character implements Fighter {
   private _race: Race;
@@ -25,6 +25,10 @@ export default class Character implements Fighter {
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
     this._energy = { type_: 'mana', amount: getRandomInt(1, 10) };
+  }
+
+  public get name(): string {
+    return this._name;
   }
 
   public get race(): Race {
@@ -55,29 +59,22 @@ export default class Character implements Fighter {
     return { type_: this._energy.type_, amount: this._energy.amount };
   }
 
-  private checkDied(): void {
-    const HP = this.lifePoints;
-
-    if (HP <= 0) this._lifePoints = -1;
-  }
-
   public receiveDamage(attackPoints: number): number {
     const damage = attackPoints - this._defense;
 
     if (damage <= 0) {
       this._lifePoints -= 1;
-      this.checkDied();
-      return this._lifePoints;
+      this._lifePoints = checkDied(this.lifePoints);
+      return this.lifePoints;
     }
 
     this._lifePoints -= damage;
-    this.checkDied();
-    return this._lifePoints;
+    this._lifePoints = checkDied(this.lifePoints);
+    return this.lifePoints;
   }
 
-  public attack(enemy: Fighter): void {
-    const damage = this.strength;
-    enemy.receiveDamage(damage);
+  public attack(enemy: SimpleFighter): void {
+    enemy.receiveDamage(this.strength);
   }
 
   public checkMaxHp(): void {
