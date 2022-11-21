@@ -11,4 +11,8 @@ export default class PVE extends Battle {
     this._player1 = p1;
     this._player2 = p2;
   }
+
+  public static fight(): number {
+    return 0;
+  }
 }
