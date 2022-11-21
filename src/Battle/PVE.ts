@@ -12,7 +12,21 @@ export default class PVE extends Battle {
     this._player2 = p2;
   }
 
-  public static fight(): number {
-    return 0;
+  public get player1(): Fighter {
+    return this._player1;
+  }
+
+  public get player2(): SimpleFighter[] {
+    return this._player2;
+  }
+
+  public fight(): number {
+    this.player2.forEach((enemy) => {
+      while (this.player1.lifePoints !== -1 && enemy.lifePoints !== -1) {
+        this.player1.attack(enemy);
+        enemy.attack(this.player1);
+      }
+    });
+    return super.fight();
   }
 }
