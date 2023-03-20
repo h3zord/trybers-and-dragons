@@ -29,7 +29,7 @@ git clone git@github.com:h3zord/trybers-and-dragons.git
 cd trybers-and-dragons
 ```
 
-### 3 - Inicie os containers:
+### 3 - Inicie o container:
 ```
 docker compose up -d
 ```
