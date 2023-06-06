@@ -10,14 +10,14 @@
 
 <strong>Trybe and Dragons</strong> é uma aplicação de jogo de RPG que permite criar personagens com raças e classes diferentes, cada um com suas próprias características, aumentar seu nível e melhorar seus atributos para ficar mais forte. É possível também criar dragões e monstros para simular batalhas entre personagens e contra monstros.
 
-O ambiente de desenvolvimento foi preparado com o Node.js usando o Docker, e o código foi escrito em TypeScript, uma linguagem com tipagem estática e forte.
+O ambiente de desenvolvimento foi preparado com o node.js usando o docker, e o código foi escrito em typescript, uma linguagem com tipagem estática e forte.
 
-## Linguagens e ferramentas:
+## Linguagens e ferramentas
 - Docker
 - Node.js
 - Typescript
 
-## Instalação e execução com Docker:
+## Instalação e execução com docker
 
 ### 1 - Clone o repositório:
 ```
